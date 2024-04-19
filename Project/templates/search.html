@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <meta charset="UTF-8">
+    <title>Search Results</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+    <!-- Include your custom style.css -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    {% include 'navbar.html' %}
+    <div class="container mt-4">
+        <h2>Search Results for "{{ query }}"</h2>
+        {% if results %}
+            <p>{{ results|length }} results found.</p>
+            <ul class="list-unstyled">
+                {% for book in results %}
+                    <li>
+                        <a href="{{ url_for('view', id=book['ID']) }}">{{ book['Title'] }}</a>
+                        by {{ book['Author'] }} - {{ book['Genre'] }}
+                    </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>No results found for "{{ query }}".</p>
+        {% endif %}
+    </div>
+</body>
+</html>

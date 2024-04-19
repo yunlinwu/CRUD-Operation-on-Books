@@ -1,0 +1,29 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="/">Books I Want to Read</a>
+        <a class="nav-item nav-link" href="/add">Add New Book</a>
+        <form class="d-flex" action="/search" method="get">
+            <input class="form-control me-2" type="search" placeholder="Search for books" aria-label="Search" name="query">
+            <button class="btn btn-outline-success" type="submit">Search</button>
+        </form>
+    </div>
+</nav>
+
+
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var searchForm = document.querySelector('form[action="/search"]');
+        searchForm.onsubmit = function() {
+            var input = this.querySelector('input[type="search"]');
+            if (!input.value.trim()) {
+                input.value = '';
+                input.focus();
+                return false; // Prevent the form from being submitted
+            }
+            return true;
+        };
+    });
+</script>
+    
+

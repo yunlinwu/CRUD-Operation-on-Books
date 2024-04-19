@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Edit Book</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+    <!-- Include your custom style.css -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    {% include 'navbar.html' %}
+    <div class="container mt-4">
+        <h2>Edit Book</h2>
+        <form id="editBookForm" action="{{ url_for('edit_book', id=id) }}" method="post">
+            <div class="form-group">
+                <label for="title">Title:</label>
+                <input type="text" id="title" name="title" value="{{ book['Title'] }}" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="author">Author:</label>
+                <input type="text" id="author" name="author" value="{{ book['Author'] }}" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="genre">Genre:</label>
+                <input type="text" id="genre" name="genre" value="{{ book['Genre'] }}" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="year">Year of Publication:</label>
+                <input type="number" id="year" name="year" value="{{ book['Year of Publication'] }}" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="linkToCoverImage">Link to Cover Image:</label>
+                <input type="url" id="linkToCoverImage" name="linkToCoverImage" value="{{ book['Link to Cover Image'] }}" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="summary">Summary:</label>
+                <textarea id="summary" name="summary" class="form-control" rows="3" required>{{ book['Summary'] }}</textarea>
+            </div>
+            <div class="form-group">
+                <label for="rating">Rating:</label>
+                <input type="text" id="rating" name="rating" value="{{ book.get('Rating', '') }}" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="tags">Tags (comma-separated):</label>
+                <input type="text" id="tags" name="tags" value="{{ ','.join(book.get('Tags', [])) }}" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="similarBooksIDs">Similar Books IDs (comma-separated):</label>
+                <input type="text" id="similarBooksIDs" name="similarBooksIDs" value="{{ ','.join(book.get('Similar Books IDs', [])) }}" class="form-control">
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="button" id="discardChanges" class="btn btn-warning">Discard Changes</button>
+        </form>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        document.getElementById('discardChanges').addEventListener('click', function() {
+            if (confirm('Are you sure you want to discard your changes?')) {
+                window.location.href = "{{ url_for('view', id=id) }}"; // Redirect back to the view page
+            }
+        });
+    </script>
+</body>
+</html>

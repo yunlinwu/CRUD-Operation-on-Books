@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <meta charset="UTF-8">
+    <title>Home - Books I Want to Read</title>
+
+    <!-- jQuery -->
+    <script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js"></script>  
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+
+    <!-- Include your custom style.css -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    {% include 'navbar.html' %}
+    
+    <div class="container mt-5">
+        <div class="text-center mb-4">
+            <h1>Explore the World of Books</h1>
+            <p>Discover your next great read, delve into epic stories, and join a community of book lovers.</p>
+        </div>
+        <h2 class="mb-3">Most Popular Books This Week:</h2>
+        <div class="row">
+            {% for book in popular_books %}
+            <div class="col-md-4 mb-4">
+                <div class="card h-100">
+                    <img src="{{ book['Link to Cover Image'] }}" class="card-img-top book-cover-image" alt="Cover image of {{ book['Title'] }}" style="cursor:pointer;" onclick="window.location.href='{{ url_for('view', id=book['ID']) }}'">
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title">{{ book['Title'] }}</h5>
+                        <p class="card-text">{{ book['Author'] }} | {{ book['Genre'] }}</p>
+                        <a href="{{ url_for('view', id=book['ID']) }}" class="btn btn-primary mt-auto">Explore More</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,110 @@
+:root {
+    --base-color: #007BFF;       /* Blue */
+    --accent-color: #FFC107;     /* Amber */
+    --light-grey: #F8F9FA;       /* Light Grey */
+    --dark-grey: #343A40;        /* Dark Grey */
+}
+
+body {
+    background-color: var(--light-grey);
+    color: var(--dark-grey);
+}
+
+/* Links */
+a {
+    color: var(--base-color);
+}
+a:hover {
+    color: var(--accent-color);
+}
+
+/* Primary Button - Used for actions like 'Explore More' */
+.btn-primary {
+    background-color: var(--base-color);
+    border-color: var(--base-color);
+    color: #ffffff;
+}
+.btn-primary:hover {
+    background-color: var(--accent-color);
+    border-color: var(--accent-color);
+    color: #ffffff;
+}
+
+/* Navbar Customization */
+.navbar {
+    background-color: var(--base-color) !important;
+    color: var(--light-grey) !important;
+}
+
+.navbar .navbar-brand, .navbar .nav-link {
+    color: var(--light-grey) !important;
+}
+.navbar .nav-link:hover, .navbar .navbar-brand:hover {
+    color: var(--accent-color) !important;
+}
+
+/* Search Button - Customized to stand out as an accent color item */
+.btn-outline-success {
+    border-color: var(--accent-color);
+    color: var(--accent-color);
+}
+.btn-outline-success:hover {
+    background-color: var(--accent-color);
+    color: var(--dark-grey);
+}
+
+/* General Card Style */
+.card {
+    border: 1px solid var(--dark-grey);
+}
+.card-title, .card-text {
+    color: var(--dark-grey);
+}
+
+/* Additional utility class for elements needing an accent border */
+.border-accent {
+    border-color: var(--accent-color) !important;
+}
+
+.details-container {
+    padding-left: 250px; /* Adjust as needed */
+}
+
+.book-cover {
+    width: 100%; /* Makes the image responsive to the container width */
+    height: auto; /* Keeps the image aspect ratio intact */
+    max-width: 240px; /* Adjust this value to set your desired maximum width */
+    max-height: 360px; /* Adjust this value to set your desired maximum height */
+    object-fit: cover; /* Ensures the cover image covers the area, might crop */
+}
+
+.book-cover-image {
+    height: 350px; /* Set a fixed height */
+    object-fit: scale-down; /* Cover the set area, might crop */
+    width: 100%; /* Use the full width of the card */
+}
+
+
+
+.card {
+    background-color: rgba(125, 125, 125, 0.989); /* Set the background of each card to dark grey */
+    color: #ffffff; /* Set the text color inside the card to white for better contrast */
+}
+
+.card .btn-primary {
+    background-color: rgb(251, 75, 75); 
+    border-color: #007bff; 
+}
+
+.card-title, .card-text {
+    color: #ffffff; /* Ensures text within the card is white for readability */
+}
+
+.card a {
+    color: white; /* Adjust link colors within the card if needed */
+}
+
+.card img {
+    border-bottom: 2px solid var(--light-grey); /* Optional: adds a separator between the image and card body */
+}
+
